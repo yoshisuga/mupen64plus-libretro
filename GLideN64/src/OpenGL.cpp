@@ -2277,7 +2277,8 @@ void OGLRender::_initExtensions()
 
 #ifdef GL_IMAGE_TEXTURES_SUPPORT
 #ifndef GLESX
-	m_bImageTexture = (((majorVersion >= 4) && (minorVersion >= 3)) || OGLVideo::isExtensionSupported("GL_ARB_shader_image_load_store")) && (glBindImageTexture != nullptr);
+	int imageTextureExtension = OGLVideo::isExtensionSupported("GL_ARB_shader_image_load_store") && OGLVideo::isExtensionSupported("GL_ARB_compute_shader") && OGLVideo::isExtensionSupported("GL_ARB_shading_language_420pack");
+	m_bImageTexture = (((majorVersion >= 4) && (minorVersion >= 3)) || imageTextureExtension) && (glBindImageTexture != nullptr);
 #else
 	m_bImageTexture = (majorVersion >= 3) && (minorVersion >= 1) && (glBindImageTexture != nullptr);
 #endif

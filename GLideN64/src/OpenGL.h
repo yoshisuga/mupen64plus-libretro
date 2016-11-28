@@ -181,6 +181,8 @@ public:
 	OGL_RENDERER getRenderer() const { return m_oglRenderer; }
 
 	void dropRenderState() {m_renderState = rsNone;}
+	GLint majorVersion;
+	GLint minorVersion;
 
 	enum {
 		TRI_VBO = 0,
@@ -286,7 +288,6 @@ private:
 	bool m_bImageTexture;
 	bool m_bFlatColors;
 	bool m_bDmaVertices;
-	GLint majorVersion, minorVersion;
 	GLuint vao;
 	typedef  struct {
 		GLuint  count;
